@@ -1,0 +1,25 @@
+{{>layouts/header}}
+
+<form class="container" method="post" action="/question/updateDB">
+    <input name="id" type="hidden" value="{{id}}">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">제목</span>
+        <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title" value="{{question.title}}">
+    </div>
+
+
+    <div class="input-group">
+        <span class="input-group-text">내용</span>
+        <textarea class="form-control" aria-label="With textarea" name="content" placeholder="내용을 입력하세요">{{question.content}}</textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">제출</button>
+    <div class="btn">
+        <a href="/question/{{question.id}}">
+            <button type="button" class="btn btn-outline-primary">질문으로 돌아가기</button>
+        </a>
+    </div>
+</form>
+
+
+{{>layouts/footer}}

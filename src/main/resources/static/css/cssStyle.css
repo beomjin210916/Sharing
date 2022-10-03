@@ -1,0 +1,22 @@
+.headerFont {
+    font-family: 'Jua', sans-serif;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.logoImage{
+    width: 80px;
+    height: 50px;
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+

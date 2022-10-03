@@ -1,0 +1,24 @@
+{{>layouts/header}}
+
+<form class="container" method="post" action="/question/createNewQuestion">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">제목</span>
+        <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title">
+    </div>
+
+
+    <div class="input-group">
+        <span class="input-group-text">내용</span>
+        <textarea class="form-control" aria-label="With textarea" name="content" placeholder="내용을 입력하세요"></textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">제출</button>
+    <div class="btn">
+        <a href="/question/questions">
+            <button type="button" class="btn btn-outline-primary">질문 리스트로 돌아가기</button>
+        </a>
+    </div>
+</form>
+
+
+{{>layouts/footer}}

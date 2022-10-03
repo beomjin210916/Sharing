@@ -1,0 +1,30 @@
+{{>layouts/header}}
+<div class="container">
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">제목</th>
+        <th scope="col">내용</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#questionList}}
+
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td><a href="/question/{{id}}">{{title}}</a></td>
+            <td>{{content}}</td>
+        </tr>
+
+    {{/questionList}}
+    </tbody>
+</table>
+
+<div class="btn">
+    <a href="/question/questionForm">
+        <button type="button" class="btn btn-primary">새 질문글 작성</button>
+    </a>
+</div>
+</div>
+{{>layouts/footer}}

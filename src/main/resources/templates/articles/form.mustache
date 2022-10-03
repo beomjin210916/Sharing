@@ -1,0 +1,32 @@
+{{>layouts/header}}
+
+<form class="container" method="post" action="/articles/create">
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">제목</span>
+    <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">모집인원</span>
+    <input type="text" class="form-control" placeholder="몇명을 필요로 하시나요(본인제외)" name="people">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">GitHub주소</span>
+    <input type="text" class="form-control" placeholder="Github 주소를 입력하세요" name="gitHubURL">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">카카오톡방 URL</span>
+    <input type="text" class="form-control" placeholder="오픈 카카오톡, 그룹 카카오톡방 url을 공유해주세요" name="kakaoURL">
+</div>
+
+<div class="input-group">
+    <span class="input-group-text">내용</span>
+    <textarea class="form-control" aria-label="With textarea" name="content"></textarea>
+</div>
+
+    <button class="btn btn-outline-primary" type="submit">제출</button>
+</form>
+
+{{>layouts/footer}}

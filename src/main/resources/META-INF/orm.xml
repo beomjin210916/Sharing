@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 구글링하기 "orm native query orm.xml example -->
+<entity-mappings
+        xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+        version="2.0">
+
+    <!-- Comment Repository 에서 findByNickname 이라는 메소드가 사용하게 하겠다 -->
+    <!-- 그것을 comment entity에서 반환을 하겠다는 뜻
+     즉 name = repository의 값, result-class 는 entity의 값
+     -->
+    <named-native-query name="Comment.findByNickname"
+                        result-class="com.example.Sharing.entity.Comment">
+        <query>
+            <![CDATA[
+                SELECT * FROM comment WHERE nickname = :nickname
+            ]]>
+        </query>
+    </named-native-query>
+</entity-mappings>
