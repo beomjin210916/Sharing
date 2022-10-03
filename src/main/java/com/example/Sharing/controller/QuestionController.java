@@ -29,7 +29,7 @@ public class QuestionController {
     @GetMapping("/question")
     public String QuestionList(){
 
-        return "question/questionList";
+        return "question/questions";
     }
 
     @GetMapping("/question/questionForm")

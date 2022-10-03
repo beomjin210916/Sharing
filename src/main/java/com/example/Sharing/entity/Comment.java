@@ -59,7 +59,7 @@ public class Comment {
         if(dto.getNickname() != null)
             this.nickname = dto.getNickname();
         if(dto.getBody() != null)
-            this.nickname = dto.getBody();
+            this.body = dto.getBody();
         
     }
 }

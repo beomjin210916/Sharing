@@ -11,7 +11,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     // 특정 게시글의 모든 댓글 조회
     @Query(value =
                     "SELECT * " +
-                    "FROM comment" +
+                    "FROM comment " +
                     "WHERE question_id = :questionId", nativeQuery = true)
     List<Comment> findByQuestionId(Long questionId); // Long뒤의 변수는 :뒤의 변수와 같아야 함(입력값)
 

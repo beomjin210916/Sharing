@@ -16,7 +16,7 @@ public class CommentApiController {
     @Autowired
     CommentService commentService;
 
-    @GetMapping("/api/question/{questionId}/comments")
+    @GetMapping("/api/questions/{questionId}/comments")
     public ResponseEntity<List<CommentDto>> comments(@PathVariable Long questionId){
 
         // 서비스에게 위임
@@ -29,7 +29,7 @@ public class CommentApiController {
     }
 
     // 댓글 생성
-    @PostMapping("/api/question/{questionId}/comments")
+    @PostMapping("/api/questions/{questionId}/comments")
     public ResponseEntity<CommentDto> create(@PathVariable Long questionId,
                                              @RequestBody CommentDto dto){
         
@@ -41,7 +41,7 @@ public class CommentApiController {
     }
 
     // 댓글 수정
-    @PatchMapping("/api/question/{id}")
+    @PatchMapping("/api/questions/{id}")
     public ResponseEntity<CommentDto> update(@PathVariable Long id,
                                              @RequestBody CommentDto dto){
         // 서비스에게 위임
@@ -52,7 +52,7 @@ public class CommentApiController {
     }
 
     // 댓글 삭제
-    @DeleteMapping("api/question/{id}")
+    @DeleteMapping("api/questions/{id}")
     public ResponseEntity<CommentDto> delete(@PathVariable Long id){
         // 서비스에게 위임
         CommentDto deletedDto = commentService.delete(id);

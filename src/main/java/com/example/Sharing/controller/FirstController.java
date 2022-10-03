@@ -14,7 +14,7 @@ public class FirstController {
     public String index() {
 
 
-        return "index";
+        return "basic/index";
     }
 
 

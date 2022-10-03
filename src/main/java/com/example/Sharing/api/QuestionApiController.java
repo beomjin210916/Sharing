@@ -57,7 +57,7 @@ public class QuestionApiController {
     }
 
     // DELETE
-    @DeleteMapping("/api/articles/{id}")
+    @DeleteMapping("/api/questions/{id}/deleteQuestion")
     public ResponseEntity<Question> deleteQuestion(@PathVariable Long id){
 
         Question deleted = questionService.deleteQuestion(id);
