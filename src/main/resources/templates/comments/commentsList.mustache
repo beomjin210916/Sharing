@@ -10,6 +10,10 @@
                                 data-bs-nickname="{{nickname}}"
                                 data-bs-body="{{body}}"
                                 data-bs-question-id="{{questionId}}">수정</button>
+                        <!-- 댓글 삭제 버튼 -->
+                        <button type="button"
+                                class="btn btn-sm btn-outline-danger comment-delete-btn"
+                                data-comment-id="{{id}}">삭제</button>
                     </div>
                     {{body}}
                 </div>
@@ -90,7 +94,6 @@
         // 수정 댓글 객체 생성
         const comment = {
             id: document.querySelector("#edit-comment-id").value,
-            nickname: document.querySelector("#edit-comment-nickname").value,
             body: document.querySelector("#edit-comment-body").value,
             questionId: document.querySelector("#edit-comment-question-id").value
         };
@@ -114,5 +117,35 @@
         });
     });
 
+}
+</script>
+
+<!-- 댓글 삭제 -->
+<Script>
+{
+  // 삭제 버튼 선택
+  const commentDeleteBtns = document.querySelectorAll(".comment-delete-btn");
+  // 삭제 버튼 이벤트를 처리
+  commentDeleteBtns.forEach(btn => {
+    // 각 버튼의 이벤트 처리를 등록
+    btn.addEventListener("click", (event) => {
+      // 이벤트 발생 요소를 선택
+      const commentDeleteBtn = event.target;
+      // 삭제 댓글 id 가져오기
+      const commentId = commentDeleteBtn.getAttribute("data-comment-id");
+      console.log(`삭제 버튼 클릭: ${commentId}번 댓글`);
+      // 삭제 API 호출 및 처리
+      const url = `/api/questions/${commentId}`;
+      fetch(url, {
+        method: "DELETE"
+      }).then(response => {
+        // 댓글 삭제 실패 처리
+        const msg = (response.ok) ? "댓글이 삭제되었습니다." : "댓글 삭제 실패";
+            alert(msg);
+        // 삭제 성공 시, 댓글을 화면에서 지움!
+        window.location.reload();
+      });
+    });
+  });
 }
 </script>
