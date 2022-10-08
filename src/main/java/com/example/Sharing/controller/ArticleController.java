@@ -3,20 +3,27 @@ package com.example.Sharing.controller;
 import com.example.Sharing.dto.ArticleForm;
 import com.example.Sharing.entity.Article;
 import com.example.Sharing.repository.ArticleRepository;
+import com.example.Sharing.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
 
 @Controller
 @Slf4j
 public class ArticleController {
 
     @Autowired
-    private ArticleRepository articleRepository;
+    private ArticleService articleService;
 
 
     @GetMapping("/articles/form")
@@ -25,13 +32,12 @@ public class ArticleController {
     }
 
     @PostMapping("/articles/create")
-    public String createArticle(ArticleForm form) {
+    // 업로드하는 파일들을 MultipartFile 형태의 파라미터로 전달된다.
+    public String createArticle(ArticleForm form, MultipartFile fileName) throws Exception{
 
-        Article article = form.toEntity();
+        articleService.createArticle(form, fileName);
 
-        Article saved = articleRepository.save(article);
-
-        return "";
+        return "redirect:/articles/show";
 
     }
 
@@ -40,13 +46,39 @@ public class ArticleController {
         log.info("id: " + id);
 
         // 1: id로 데이터를 가져옴!
-        Article articleEntity = articleRepository.findById(id).orElse(null);
+        Article article = articleService.showArticle(id);
 
         // 2. 가져온 데이터를 모델에 등록!
-        model.addAttribute("article", articleEntity);
+        model.addAttribute("article", article);
 
 
         return "articles/show";
+    }
+
+    @GetMapping("/articles/{id}/edit")
+    public String showPreviousArticle(@PathVariable Long id, Model model) {
+        Article previous = articleService.showArticle(id);
+
+        model.addAttribute("article", previous);
+
+        return "articles/editArticle";
+
+    }
+
+    @PostMapping("/articles/{id}/updateDB")
+    public String fixArticle(@PathVariable Long id, ArticleForm form) {
+
+        Article fixed = articleService.editArticle(id, form);
+
+        return "redirect:/articles/" + fixed.getId();
+    }
+
+    @GetMapping("/articles/{id}/deleteArticle")
+    public String deleteArticle(@PathVariable Long id, RedirectAttributes rttr) {
+
+        articleService.deleteArticle(id, rttr);
+
+        return "basic/index";
     }
 
 

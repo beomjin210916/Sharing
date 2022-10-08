@@ -1,0 +1,42 @@
+{{>layouts/header}}
+
+<form class="container" method="post" action="/article/updateDB">
+    {{#article}}
+
+    <input name="id" type="hidden" value="{{id}}">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">제목</span>
+        <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title" value="{{title}}">
+    </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">인원</span>
+            <input type="text" class="form-control" placeholder="인원을 입력하세요" name="people" value="{{title}}">
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">깃허브 주소</span>
+            <input type="text" class="form-control" placeholder="깃허브주소를 입력하세요" name="gitHubURL" value="{{title}}">
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">카카오 URL</span>
+            <input type="text" class="form-control" placeholder="카카오 URL을 입력하세요" name="kakaoURL" value="{{title}}">
+        </div>
+
+    <div class="input-group">
+        <span class="input-group-text">내용</span>
+        <textarea class="form-control" aria-label="With textarea" name="content" placeholder="내용을 입력하세요">{{content}}</textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">제출</button>
+    <div class="btn">
+        <a href="/articles/{{id}}">
+            <button type="button" class="btn btn-outline-primary">포스팅으로 돌아가기</button>
+        </a>
+    </div>
+    {{/article}}
+</form>
+
+
+{{>layouts/footer}}
