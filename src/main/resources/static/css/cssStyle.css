@@ -20,3 +20,8 @@ h1{
     object-fit: cover;
 }
 
+.img-fill-container {
+    object-fit: cover;
+    width: 2000px;
+    height: 30%;
+}

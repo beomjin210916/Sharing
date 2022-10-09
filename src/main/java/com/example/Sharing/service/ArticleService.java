@@ -65,13 +65,25 @@ public class ArticleService {
     }
 
 
-    public Article createArticle(ArticleForm form) {
+    public Article createArticle(ArticleForm form, MultipartFile file) throws Exception {
 
         Article article = form.toEntity();
 
         if(article.getId() != null){
             return null;
         }
+
+        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\images";
+
+        UUID uuid = UUID.randomUUID();
+        String fileName = uuid + "_" + file.getOriginalFilename();
+        File saveFile = new File(projectPath, fileName);
+
+        file.transferTo(saveFile);
+
+        article.setFileName(fileName);
+        article.setFilePath("/images/" + fileName);
+
 
         return articleRepository.save(article);
 

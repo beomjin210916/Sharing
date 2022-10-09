@@ -33,9 +33,9 @@ public class ArticleController {
 
     @PostMapping("/articles/create")
     // 업로드하는 파일들을 MultipartFile 형태의 파라미터로 전달된다.
-    public String createArticle(ArticleForm form){
+    public String createArticle(ArticleForm form, MultipartFile file) throws Exception{
 
-        Article newArticle = articleService.createArticle(form);
+        Article newArticle = articleService.createArticle(form, file);
 
         return "redirect:/articles/" + newArticle.getId();
 

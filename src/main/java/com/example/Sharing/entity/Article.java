@@ -31,6 +31,9 @@ public class Article {
     @Column
     private String content;
 
+    private String fileName;
+
+    private String filePath;
 
     public void patch(Article fixedArticle) {
 
