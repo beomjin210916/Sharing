@@ -32,6 +32,7 @@ public class ArticleService {
 
     }
 
+
     public Article editArticle(Long id, ArticleForm form){
 
         // 값을 받아와서 고칠 것을 가져옴
@@ -40,7 +41,7 @@ public class ArticleService {
         // 예전에 있던 아티클을 불러옴
         Article previousArticle = articleRepository.findById(willFixedArticle.getId()).orElse(null);
 
-        if(willFixedArticle == null || willFixedArticle.getId() != id){
+        if(previousArticle == null || willFixedArticle.getId() != id){
             return null;
         }
 
@@ -51,35 +52,28 @@ public class ArticleService {
 
     }
 
-    public void deleteArticle(Long id, RedirectAttributes rttr) {
+    public void deleteArticle(Long id) {
 
 
         Article willDeletedArticle = articleRepository.findById(id).orElse(null);
 
         if(willDeletedArticle != null) {
             articleRepository.delete(willDeletedArticle);
-            rttr.addFlashAttribute("msg", "삭제가 완료되었습니다");
         }
 
-        return;
 
     }
 
 
-    public void createArticle(ArticleForm form, MultipartFile file) throws Exception{
-
-        String projectPath = "D:\\study\\IntelliJ\\Sharing\\src\\main\\resources\\static\\images";
-
-        UUID uuid = UUID.randomUUID();
-
-        String fileName = uuid + "_" + file.getOriginalFilename();
-
-        File saveFile = new File(projectPath, fileName);
-
-        file.transferTo(saveFile);
+    public Article createArticle(ArticleForm form) {
 
         Article article = form.toEntity();
-        articleRepository.save(article);
+
+        if(article.getId() != null){
+            return null;
+        }
+
+        return articleRepository.save(article);
 
     }
 

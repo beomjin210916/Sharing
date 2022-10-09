@@ -31,23 +31,25 @@
                 <td></td>
             </tr>
             </tbody>
-        {{/article}}
+
     </table>
 
     <div class="btn">
-        <a href="/question/{{article.id}}/editQuestion">
+        <a href="/articles/{{id}}/edit">
             <button type="button" class="btn btn-primary">수정하기</button>
         </a>
     </div>
 
     <div class="btn">
-        <a href="/question/{{article.id}}/deleteQuestion">
+        <a href="/articles/{{id}}/deleteArticle">
             <button type="button" class="btn btn-danger">삭제하기</button>
         </a>
     </div>
 
+        {{/article}}
+
     <div class="btn">
-        <a href="/basic/index">
+        <a href="/">
             <button type="button" class="btn btn-primary">메인화면으로 돌아가기</button>
         </a>
     </div>

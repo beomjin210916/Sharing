@@ -1,6 +1,6 @@
 {{>layouts/header}}
 
-<form class="container" method="post" action="/article/updateDB">
+<form class="container" method="post" action="/articles/{{article.id}}/updateDB">
     {{#article}}
 
     <input name="id" type="hidden" value="{{id}}">
@@ -11,17 +11,17 @@
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">인원</span>
-            <input type="text" class="form-control" placeholder="인원을 입력하세요" name="people" value="{{title}}">
+            <input type="text" class="form-control" placeholder="인원을 입력하세요" name="people" value="{{people}}">
         </div>
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">깃허브 주소</span>
-            <input type="text" class="form-control" placeholder="깃허브주소를 입력하세요" name="gitHubURL" value="{{title}}">
+            <input type="text" class="form-control" placeholder="깃허브주소를 입력하세요" name="gitHubURL" value="{{gitHubURL}}">
         </div>
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">카카오 URL</span>
-            <input type="text" class="form-control" placeholder="카카오 URL을 입력하세요" name="kakaoURL" value="{{title}}">
+            <input type="text" class="form-control" placeholder="카카오 URL을 입력하세요" name="kakaoURL" value="{{kakaoURL}}">
         </div>
 
     <div class="input-group">

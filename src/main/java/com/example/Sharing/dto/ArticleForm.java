@@ -18,13 +18,10 @@ public class ArticleForm {
     private String kakaoURL;
     private String content;
 
-    private String fileName;
-
-    private String filePath;
 
 
     public Article toEntity(){
-        return new Article(id, title, people, gitHubURL, kakaoURL, content, fileName, filePath);
+        return new Article(id, title, people, gitHubURL, kakaoURL, content);
     }
 
 

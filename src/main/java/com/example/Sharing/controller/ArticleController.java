@@ -33,11 +33,11 @@ public class ArticleController {
 
     @PostMapping("/articles/create")
     // 업로드하는 파일들을 MultipartFile 형태의 파라미터로 전달된다.
-    public String createArticle(ArticleForm form, MultipartFile fileName) throws Exception{
+    public String createArticle(ArticleForm form){
 
-        articleService.createArticle(form, fileName);
+        Article newArticle = articleService.createArticle(form);
 
-        return "redirect:/articles/show";
+        return "redirect:/articles/" + newArticle.getId();
 
     }
 
@@ -70,15 +70,20 @@ public class ArticleController {
 
         Article fixed = articleService.editArticle(id, form);
 
-        return "redirect:/articles/" + fixed.getId();
+        return "redirect:/articles/" + id;
     }
 
     @GetMapping("/articles/{id}/deleteArticle")
     public String deleteArticle(@PathVariable Long id, RedirectAttributes rttr) {
 
-        articleService.deleteArticle(id, rttr);
+        articleService.deleteArticle(id);
 
-        return "basic/index";
+        Article article = articleService.showArticle(id);
+        if(article != null) {
+            rttr.addFlashAttribute("msg", "삭제가 완료되었습니다.");
+        }
+
+        return "redirect:/";
     }
 
 

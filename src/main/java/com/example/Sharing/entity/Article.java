@@ -31,12 +31,6 @@ public class Article {
     @Column
     private String content;
 
-    @Column
-    private String fileName;
-
-    @Column
-    private String filePath;
-
 
     public void patch(Article fixedArticle) {
 
@@ -45,8 +39,6 @@ public class Article {
         if(fixedArticle.title != null) this.gitHubURL = fixedArticle.getGitHubURL();
         if(fixedArticle.title != null) this.kakaoURL = fixedArticle.getKakaoURL();
         if(fixedArticle.title != null) this.content = fixedArticle.getContent();
-        if(fixedArticle.title != null) this.fileName = fixedArticle.getFileName();
-        if(fixedArticle.title != null) this.filePath = fixedArticle.getFilePath();
 
     }
 }
