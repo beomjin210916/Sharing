@@ -1,0 +1,57 @@
+{{>layouts/header}}
+<div class="d-flex justify-content-end bg-light">
+    <h5>{{usingUser.username}}님 환영합니다</h5>
+    <a href="/login/login" style="float: right;">
+        <button type="button" class="btn btn-outline-secondary" >로그아웃</button>
+    </a>
+</div>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid justify-content-center">
+        <div class="row">
+            <form class="d-flex" action="/articles/search" method="get" role="search">
+                <input class="form-control me-2" type="search" placeholder="검색할 게시글을 입력하세요" aria-label="Search" name="keyword">
+                <button class="btn btn-outline-success" type="submit">검색</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="btn">
+    <a href="/articles/form">
+        <button type="button" class="btn btn-primary">새로 만들기</button>
+    </a>
+</div>
+
+
+<div class="container">
+    <div class="px-lg-5">
+
+        <div class="row">
+
+
+            {{#articles}}
+                <!-- Gallery item -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="bg-white rounded shadow-sm"><img src="/images/{{fileName}}" alt="" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <h5> <a href="/articles/{{id}}" class="text-dark">{{title}}</a></h5>
+                            <p class="small text-muted mb-0">{{content}}</p>
+                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold"></span></p>
+                                <div class="badge badge-primary px-3 rounded-pill font-weight-normal">Trend</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+            {{/articles}}
+
+
+
+        </div>
+        <div class="py-5 text-right"><a href="#" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a></div>
+    </div>
+</div>
+
+
+{{>layouts/footer}}

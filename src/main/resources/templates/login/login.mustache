@@ -22,15 +22,15 @@
         <h2 class="card-title text-center" style="color:#113366;">로그인 폼</h2>
     </div>
     <div class="card-body">
-        <form class="form-signin" method="POST" action="/login/loginAndBack">
+        <form class="form-signin" method="POST" action="/login/login">
             <h5 class="form-signin-heading">로그인 정보를 입력하세요</h5>
             <label for="input" class="sr-only">아이디</label>
-            <input type="text" id="uid" class="form-control" placeholder="아이디" required autofocus name="ID"><BR>
+            <input type="text" id="uid" class="form-control" placeholder="아이디" name="username" required autofocus><BR>
             <label for="inputPassword" class="sr-only" >Password</label>
             <input type="password" id="upw" class="form-control" placeholder="비밀번호" required name="password"><br>
             <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">로 그 인</button>
         </form>
-        <a href="/login/signup">
+        <a href="/login/joinForm">
             <button type="button" class="btn btn-outline-secondary" >회원가입</button>
         </a>
     </div>

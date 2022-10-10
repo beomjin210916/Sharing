@@ -4,11 +4,15 @@ import com.example.Sharing.dto.ArticleForm;
 import com.example.Sharing.entity.Article;
 import com.example.Sharing.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.transaction.Transactional;
 
 import java.io.File;
 import java.util.List;
@@ -88,6 +92,15 @@ public class ArticleService {
         return articleRepository.save(article);
 
     }
+
+    // 검색 기능 구현
+    @Transactional
+    public Page<Article> search(String keyword, Pageable pageable){
+        Page<Article> articleList = articleRepository.findByTitleContaining(keyword, pageable);
+
+        return articleList;
+    }
+
 
 
 }
